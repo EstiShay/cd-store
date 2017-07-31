@@ -15,5 +15,7 @@ public class CD {
         this.releaseYr = releaseYr;
         this.price = price;
     }
-
+    public boolean rightYear(int inputYear) {
+        return (releaseYr == inputYear);
+    }
 }

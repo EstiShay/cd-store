@@ -19,13 +19,13 @@ public class App {
 
         while (programRunning) {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Welcome to Tower Records! What would you like to do? Add an Album, See Inventory, Search by Year, Search by Artist, or Exit?");
+            System.out.println("Welcome to Tower Records! What would you like to do? Add an album, See inventory, Search by year, Search by artist, Search by price, or Exit?");
 
             try {
 
                 String navigationChoice = bufferedReader.readLine();
 
-                if (navigationChoice.equals("Add an Album")) {
+                if (navigationChoice.equals("Add an album")) {
                     System.out.println("Artist name: ");
                     String userArtistName = bufferedReader.readLine();
                     System.out.println("Album name: ");
@@ -36,7 +36,7 @@ public class App {
                     float userPrice = Float.parseFloat(bufferedReader.readLine());
                     CD newCD = new CD(userArtistName, userAlbumName, userReleaseYr, userPrice);
                     allAlbums.add(newCD);
-                } else if (navigationChoice.equals("See Inventory")) {
+                } else if (navigationChoice.equals("See inventory")) {
                     for (CD anAlbum : allAlbums) {
                         System.out.println("----------------------");
                         System.out.println(anAlbum.artistName);
@@ -47,7 +47,7 @@ public class App {
                 } else if (navigationChoice.equals("Exit")) {
                     System.out.println("Goodbye!");
                     programRunning = false;
-                } else if (navigationChoice.equals("Search by Year")) {
+                } else if (navigationChoice.equals("Search by year")) {
                     System.out.println("What year would you like to search?");
                     String stringUserYear = bufferedReader.readLine();
                     int userYear = Integer.parseInt(stringUserYear);
@@ -60,7 +60,7 @@ public class App {
                             System.out.println(anAlbum.price);
                         }
                     }
-                } else if (navigationChoice.equals("Search by Artist")) {
+                } else if (navigationChoice.equals("Search by artist")) {
                     System.out.println("Which artist would you like to search?");
                     String userArtist = bufferedReader.readLine();
                     for (CD anAlbum : allAlbums) {
@@ -71,6 +71,27 @@ public class App {
                             System.out.println(anAlbum.releaseYr);
                             System.out.println(anAlbum.price);
                         }
+                    }
+                } else if (navigationChoice.equals("Search by price")) {
+                    System.out.println("What the minimum price?");
+                    String stringMinPrice = bufferedReader.readLine();
+                    Float minPrice = Float.parseFloat(stringMinPrice);
+                    System.out.println("What the maximum price?");
+                    String stringMaxPrice = bufferedReader.readLine();
+                    Float maxPrice = Float.parseFloat(stringMaxPrice);
+                    Integer index = 0;
+                    for (CD anAlbum : allAlbums) {
+                        if (anAlbum.setPriceRange(minPrice, maxPrice)) {
+                            System.out.println("----------------------");
+                            System.out.println(anAlbum.artistName);
+                            System.out.println(anAlbum.albumName);
+                            System.out.println(anAlbum.releaseYr);
+                            System.out.println(anAlbum.price);
+                            index += 1;
+                        }
+                    }
+                    if (index == 0) {
+                        System.out.println("No results found");
                     }
                 } else {
                     System.out.println("Error!");

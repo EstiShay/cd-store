@@ -22,4 +22,8 @@ public class CD {
     public boolean rightArtist(String inputArtist) {
         return (artistName.equals(inputArtist));
     }
+
+    public boolean setPriceRange(Float minPrice, Float maxPrice) {
+        return (price >= minPrice && price <= maxPrice);
+    }
 }

@@ -60,6 +60,18 @@ public class App {
                             System.out.println(anAlbum.price);
                         }
                     }
+                } else if (navigationChoice.equals("Search by Artist")) {
+                    System.out.println("Which artist would you like to search?");
+                    String userArtist = bufferedReader.readLine();
+                    for (CD anAlbum : allAlbums) {
+                        if (anAlbum.rightArtist(userArtist)) {
+                            System.out.println("----------------------");
+                            System.out.println(anAlbum.artistName);
+                            System.out.println(anAlbum.albumName);
+                            System.out.println(anAlbum.releaseYr);
+                            System.out.println(anAlbum.price);
+                        }
+                    }
                 } else {
                     System.out.println("Error!");
                 }

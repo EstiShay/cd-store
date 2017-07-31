@@ -18,4 +18,8 @@ public class CD {
     public boolean rightYear(int inputYear) {
         return (releaseYr == inputYear);
     }
+
+    public boolean rightArtist(String inputArtist) {
+        return (artistName.equals(inputArtist));
+    }
 }
